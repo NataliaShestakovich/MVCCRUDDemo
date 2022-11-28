@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfFriend xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Friend>
+    <FriendID>3c7a744c-25c0-462b-94ca-3ca887e217d4</FriendID>
+    <FriendName>Natallia</FriendName>
+    <Place>Minsk</Place>
+  </Friend>
+  <Friend>
+    <FriendID>5979d2ad-a1ca-4933-9322-b1030d8581a7</FriendID>
+    <FriendName>Olga</FriendName>
+    <Place>Minsk</Place>
+  </Friend>
+</ArrayOfFriend>
