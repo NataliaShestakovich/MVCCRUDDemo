@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVCCRUDDemo.Models;
 using MVCCRUDDemo.Models.Domain;
+using System.Net;
 
 namespace MVCCRUDDemo.Controllers
 {
@@ -44,10 +45,10 @@ namespace MVCCRUDDemo.Controllers
 
             if (friend != null)
             {
-                return View("View", friend);
+                return View("Details", friend);
             }
 
-            return RedirectToAction("Index");
+            return NotFound("The requested object was not found");
         }
 
         [HttpPost]
@@ -82,7 +83,7 @@ namespace MVCCRUDDemo.Controllers
                 return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index");
+           return NotFound("The requested object was not found");
         }
     }
 }

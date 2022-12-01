@@ -1,12 +1,11 @@
 ﻿using MVCCRUDDemo.Models.Domain;
-using System.Diagnostics.Metrics;
 using System.Xml.Serialization;
 
 namespace MVCCRUDDemo
 {
     public static class Storage
     {
-        private static string path = @"D:\MVCCRUDDemo\Friends.xml";
+        private static string path = @"Friends.xml";
         public static List<Friend> friends;
 
         static Storage()
