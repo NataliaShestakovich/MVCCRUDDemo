@@ -39,7 +39,7 @@ namespace MVCCRUDDemo.Controllers
         }
 
         [HttpGet]
-        public IActionResult View(Guid id)
+        public IActionResult Details (Guid id)
         {
             var friend = Storage.friends.FirstOrDefault(x => x.FriendID== id);
 
@@ -52,7 +52,7 @@ namespace MVCCRUDDemo.Controllers
         }
 
         [HttpPost]
-        public IActionResult View(Friend model)
+        public IActionResult Details (Friend model)
         {
             var friend = Storage.friends.Find(x => x.FriendID == model.FriendID);
             

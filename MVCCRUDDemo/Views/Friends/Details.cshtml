@@ -2,7 +2,7 @@
 
 <h1>Edit Friend</h1>
 
-<form method="post" action="View" class="mt-7">
+<form method="post" action="Details" class="mt-7">
  
   <div class="mb-3">
     <label for="" class="form-label">ID</label>
@@ -19,7 +19,8 @@
         <input type="text" class="form-control" asp-for="Place" required>
   </div>
 
-  <button type="submit" class="btn btn-primary" >Submit</button>
+  <button type="submit" class="btn btn-primary" 
+  asp-action="Details">Submit</button>
   <button type="submit" class="btn btn-danger" 
   asp-action ="Delete"
   asp-controller = "Friends">Delete</button>
