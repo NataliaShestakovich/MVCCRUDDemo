@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVCCRUDDemo.DBContext;
-using MVCCRUDDemo.Models;
 using MVCCRUDDemo.Models.Domain;
-using MVCCRUDDemo.Services;
 using MVCCRUDDemo.Services.Interfaces;
-using System.Net;
 
 namespace MVCCRUDDemo.Controllers
 {
@@ -23,7 +19,7 @@ namespace MVCCRUDDemo.Controllers
         public IActionResult Index()
         {
             _friends = _friendService.GetFriends();
-            
+
             return View(_friends);
         }
 
@@ -42,7 +38,7 @@ namespace MVCCRUDDemo.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details (Guid id)
+        public IActionResult Details(Guid id)
         {
             var friend = _friendService.Get(id);
 
@@ -55,7 +51,7 @@ namespace MVCCRUDDemo.Controllers
         }
 
         [HttpPost]
-        public IActionResult Details (Friend model)
+        public IActionResult Details(Friend model)
         {
             _friendService.Update(model);
 
@@ -66,7 +62,7 @@ namespace MVCCRUDDemo.Controllers
         public IActionResult Delete(Friend model)
         {
             _friendService.Delete(model);
-                
+
             return RedirectToAction("Index");
         }
     }

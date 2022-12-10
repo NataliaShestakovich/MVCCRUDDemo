@@ -5,7 +5,7 @@ namespace MVCCRUDDemo.DBContext
 {
     public class MVCDbContext : DbContext
     {
-        public MVCDbContext(DbContextOptions<MVCDbContext> options) 
+        public MVCDbContext(DbContextOptions<MVCDbContext> options)
             : base(options)
         {
             Database.EnsureCreated();
