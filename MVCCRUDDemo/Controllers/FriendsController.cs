@@ -1,23 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVCCRUDDemo.DBContext;
 using MVCCRUDDemo.Models;
 using MVCCRUDDemo.Models.Domain;
+using MVCCRUDDemo.Services;
+using MVCCRUDDemo.Services.Interfaces;
 using System.Net;
 
 namespace MVCCRUDDemo.Controllers
 {
     public class FriendsController : Controller
     {
-        List<Friend> friends;
 
-        public FriendsController()
+        private readonly IFriendService _friendService;
+        private List<Friend> _friends;
+
+        public FriendsController(IFriendService friendService)
         {
-            friends = Storage.friends;
+            _friendService = friendService;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            return View(friends);
+            _friends = _friendService.GetFriends();
+            
+            return View(_friends);
         }
 
         [HttpGet]
@@ -29,11 +36,7 @@ namespace MVCCRUDDemo.Controllers
         [HttpPost]
         public IActionResult Add(Friend addFriendRequest)
         {
-           addFriendRequest.FriendID = Guid.NewGuid();
-
-            Storage.friends.Add(addFriendRequest);
-
-            Storage.UpdateOfFriends();
+            _friendService.Create(addFriendRequest);
 
             return RedirectToAction("Index");
         }
@@ -41,7 +44,7 @@ namespace MVCCRUDDemo.Controllers
         [HttpGet]
         public IActionResult Details (Guid id)
         {
-            var friend = Storage.friends.FirstOrDefault(x => x.FriendID== id);
+            var friend = _friendService.Get(id);
 
             if (friend != null)
             {
@@ -54,15 +57,7 @@ namespace MVCCRUDDemo.Controllers
         [HttpPost]
         public IActionResult Details (Friend model)
         {
-            var friend = Storage.friends.Find(x => x.FriendID == model.FriendID);
-            
-            var index = Storage.friends.IndexOf(friend);
-            
-            Storage.friends.RemoveAt(index);
-            
-            Storage.friends.Insert(index, model);
-
-            Storage.UpdateOfFriends();
+            _friendService.Update(model);
 
             return RedirectToAction("Index");
         }
@@ -70,20 +65,9 @@ namespace MVCCRUDDemo.Controllers
         [HttpPost]
         public IActionResult Delete(Friend model)
         {
-            var friend = Storage.friends.Find(x => x.FriendID == model.FriendID);
-
-            if (friend != null)
-            {
-                var index = Storage.friends.IndexOf(friend);
-
-                Storage.friends.RemoveAt(index);
-
-                Storage.UpdateOfFriends();
-
-                return RedirectToAction("Index");
-            }
-
-           return NotFound("The requested object was not found");
+            _friendService.Delete(model);
+                
+            return RedirectToAction("Index");
         }
     }
 }

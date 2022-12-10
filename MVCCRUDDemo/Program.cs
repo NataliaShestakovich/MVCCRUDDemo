@@ -1,7 +1,30 @@
+using Microsoft.EntityFrameworkCore;
+using MVCCRUDDemo.DBContext;
+using MVCCRUDDemo.Repositories;
+using MVCCRUDDemo.Repositories.Interfaces;
+using MVCCRUDDemo.Services;
+using MVCCRUDDemo.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var connectionString = builder.Configuration.GetConnectionString("MVCConnectionString");
+
+builder.Services.AddDbContext<MVCDbContext>(
+    options => options.UseSqlServer(connectionString));
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddScoped<IFriendService, FriendService>();
+}
+else
+{
+    builder.Services.AddScoped<IFriendService, StubFriendService>();
+}
+
+builder.Services.AddScoped<IFriendRepository, FriendRepository>();
 
 var app = builder.Build();
 
@@ -14,6 +37,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
