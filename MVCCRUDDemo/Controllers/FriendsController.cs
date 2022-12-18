@@ -6,10 +6,8 @@ namespace MVCCRUDDemo.Controllers
 {
     public class FriendsController : Controller
     {
-
         private readonly IFriendService _friendService;
-        private List<Friend> _friends;
-
+        
         public FriendsController(IFriendService friendService)
         {
             _friendService = friendService;
@@ -18,7 +16,7 @@ namespace MVCCRUDDemo.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            _friends = _friendService.GetFriends();
+            var _friends = _friendService.GetFriends();
 
             return View(_friends);
         }

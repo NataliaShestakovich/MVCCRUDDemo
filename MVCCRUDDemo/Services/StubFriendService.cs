@@ -6,9 +6,9 @@ namespace MVCCRUDDemo.Services
 {
     public class StubFriendService : IFriendService
     {
-        private readonly IFriendRepository _friendRepository;
+        private readonly IRepository<Friend> _friendRepository;
 
-        public StubFriendService(IFriendRepository friendRepository)
+        public StubFriendService(IRepository<Friend> friendRepository)
         {
             _friendRepository = friendRepository;
         }

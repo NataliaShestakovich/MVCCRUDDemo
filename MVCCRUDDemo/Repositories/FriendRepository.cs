@@ -4,7 +4,7 @@ using MVCCRUDDemo.Repositories.Interfaces;
 
 namespace MVCCRUDDemo.Repositories
 {
-    public class FriendRepository : IFriendRepository
+    public class FriendRepository : IRepository<Friend>
     {
         private readonly MVCDbContext _friendDBContext;
 

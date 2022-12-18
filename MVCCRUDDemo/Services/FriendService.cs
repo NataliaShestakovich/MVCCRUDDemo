@@ -7,36 +7,36 @@ namespace MVCCRUDDemo.Services
 {
     public class FriendService : IFriendService
     {
-        private readonly IFriendRepository _friendRepository;
+        private readonly IRepository<Friend> _repository;
 
-        public FriendService(IFriendRepository friendRepository)
+        public FriendService(IRepository<Friend> repository)
         {
-            _friendRepository = friendRepository;
+            _repository = repository;
         }
 
         public Friend Create(Friend friend)
         {
-            return _friendRepository.Add(friend);
+            return _repository.Add(friend);
         }
 
         public void Delete(Friend friend)
         {
-            _friendRepository.Delete(friend);
+            _repository.Delete(friend);
         }
 
         public Friend? Get(Guid id)
         {
-            return _friendRepository.Get(id);
+            return _repository.Get(id);
         }
 
         public List<Friend>? GetFriends()
         {
-            return _friendRepository.GetList();
+            return _repository.GetList();
         }
 
         public void Update(Friend friend)
         {
-            _friendRepository.Update(friend);
+            _repository.Update(friend);
         }
     }
 }

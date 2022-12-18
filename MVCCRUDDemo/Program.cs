@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MVCCRUDDemo.DBContext;
+using MVCCRUDDemo.Models.Domain;
 using MVCCRUDDemo.Repositories;
 using MVCCRUDDemo.Repositories.Interfaces;
 using MVCCRUDDemo.Services;
@@ -24,7 +25,7 @@ else
     builder.Services.AddScoped<IFriendService, StubFriendService>();
 }
 
-builder.Services.AddScoped<IFriendRepository, FriendRepository>();
+builder.Services.AddScoped<IRepository<Friend>, FriendRepository>();
 
 var app = builder.Build();
 
