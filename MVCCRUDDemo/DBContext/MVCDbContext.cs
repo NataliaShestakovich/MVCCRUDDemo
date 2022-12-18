@@ -8,7 +8,7 @@ namespace MVCCRUDDemo.DBContext
         public MVCDbContext(DbContextOptions<MVCDbContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
         public DbSet<Friend> Friends { get; set; }

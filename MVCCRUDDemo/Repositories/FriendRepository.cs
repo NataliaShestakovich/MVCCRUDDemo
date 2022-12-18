@@ -31,6 +31,7 @@ namespace MVCCRUDDemo.Repositories
             if (_friend!= null)
             {
                 _friendDBContext.Friends.Remove(_friend);
+
                 _friendDBContext.SaveChanges();
             }            
         }
@@ -41,6 +42,7 @@ namespace MVCCRUDDemo.Repositories
             {
                 return _friendDBContext.Friends.Find(id);
             }
+
             return null;
         }
 
@@ -52,6 +54,7 @@ namespace MVCCRUDDemo.Repositories
         public void Update(Friend friend)
         {
              _friendDBContext.Update(friend);
+
              _friendDBContext.SaveChanges();
         }
     }
