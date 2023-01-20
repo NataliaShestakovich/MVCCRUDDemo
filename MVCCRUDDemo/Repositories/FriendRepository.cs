@@ -8,9 +8,9 @@ namespace MVCCRUDDemo.Repositories
     {
         private readonly MVCDbContext _friendDBContext;
 
-        public FriendRepository(MVCDbContext friendDB)
+        public FriendRepository(MVCDbContext friendDBContext)
         {
-            _friendDBContext = friendDB;
+            _friendDBContext = friendDBContext;
         }
 
         public Friend Add (Friend friend)

@@ -30,6 +30,11 @@ namespace MVCCRUDDemo.Controllers
         [HttpPost]
         public IActionResult Add(Friend addFriendRequest)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             _friendService.Create(addFriendRequest);
 
             return RedirectToAction("Index");
@@ -51,6 +56,10 @@ namespace MVCCRUDDemo.Controllers
         [HttpPost]
         public IActionResult Details(Friend model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             _friendService.Update(model);
 
             return RedirectToAction("Index");

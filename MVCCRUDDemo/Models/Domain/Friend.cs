@@ -4,13 +4,16 @@ namespace MVCCRUDDemo.Models.Domain
 {
     public class Friend
     {
-        [Key]
+        [Required]
+        [Display(Name = "Id")]
         public Guid FriendID { get; set; }
 
-        [Required]
+        [Display(Name ="Name")]
+        [Required(ErrorMessage = "Field {0} cannot be empty", AllowEmptyStrings = true)]
         public string FriendName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Field {0} cannot be empty")]
+        [StringLength(25)]
         public string Place { get; set; }
     }
 }

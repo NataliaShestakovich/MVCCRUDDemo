@@ -2,16 +2,23 @@
 
 <h1>Add Friend</h1>
 
-<form method="post" action="Add" class="mt-7">
+<form asp-controller="Friends" asp-action="Add" method="post">
   <div class="mb-3">
-    <label for="" class="form-label">Name</label>
-    <input type="text" class="form-control" asp-for="FriendName" required>
+    <label asp-for="FriendName"></label>
+    <input asp-for="FriendName" class="form-control"  />
+    <span asp-validation-for="FriendName" class="text-danger"> </span>
   </div>
 
   <div class="mb-3">
-    <label for="" class="form-label">Place</label>
-    <input type="text" class="form-control" asp-for="Place" required>
+    <label asp-for="Place"></label>
+    <input asp-for="Place" class="form-control"  />
+    <span asp-validation-for="Place" class="text-danger"></span>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>  
+
